@@ -14,6 +14,7 @@ public class Game {
 	}
 	void createUI(){
 		frame.add(panel);
+		frame.addKeyListener(panel);
 		frame.setSize(width, height);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
