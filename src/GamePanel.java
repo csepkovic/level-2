@@ -1,4 +1,3 @@
-
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,10 +10,15 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
 	Character character;
-
+	Platforms platform;
+	ObjectManager manager;
 	public GamePanel() {
 		timer = new Timer(1000 / 60, this);
-		character = new Character(225, 375, 50, 50, 0, 0.5, 0);
+		character = new Character(225, 200, 50, 50, 0, 0, true);
+		platform = new Platforms(150, 450, 150, 50, 0, true);
+		manager = new ObjectManager(character);
+		
+		manager.addObject(platform);
 	}
 
 	void startGame() {
@@ -23,12 +27,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	public void paintComponent(Graphics g) {
 		character.draw(g);
+		platform.draw(g);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		character.update();
+		//character.update(0.5);
+		//platform.update(0.5);
+		manager.update();
 		repaint();
 	}
 
@@ -43,10 +50,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			character.speed = -5;
-		} else if (e.getKeyCode() == KeyEvent.VK_D) {
+		} if (e.getKeyCode() == KeyEvent.VK_D) {
 			character.speed = 5;
-		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+		} if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			character.yVel=-10;
+			platform.yVel=-2;
+			System.out.println("hi");
 		}
 	}
 
