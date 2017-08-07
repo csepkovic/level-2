@@ -21,7 +21,7 @@ public class Game {
 		panel.startGame();
 	}
 	public static void main(String[] args) {
-		Game game = new Game(500, 800);
+		Game game = new Game(700, 600);
 	}
 }
 

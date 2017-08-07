@@ -10,7 +10,6 @@ public class ObjectManager {
 
 	public ObjectManager(Character character) {
 		objects = new ArrayList<GameObject>();
-		this.character = character;
 	}
 
 
@@ -19,14 +18,9 @@ public class ObjectManager {
 	}
 
 	public void update() {
-		if (character.y<=400) {
-			character.update(gravity);
-		} else {
 			for (int i = 0; i < objects.size(); i++) {
 				GameObject o = objects.get(i);
-				o.update(gravity);
 			}
-		}
 		purgeObjects();
 	}
 

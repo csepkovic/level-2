@@ -10,15 +10,15 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
 	Character character;
-	Platforms platform;
+	Level level;
 	ObjectManager manager;
 	public GamePanel() {
 		timer = new Timer(1000 / 60, this);
 		character = new Character(225, 200, 50, 50, 0, 0, true);
-		platform = new Platforms(150, 450, 150, 50, 0, true);
+		level = new Level(50, 50, 600, 475, true, 0);
 		manager = new ObjectManager(character);
 		
-		manager.addObject(platform);
+		manager.addObject(level);
 	}
 
 	void startGame() {
@@ -26,17 +26,30 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void paintComponent(Graphics g) {
+		g.fillRect(0, 0, 700, 600);
 		character.draw(g);
-		platform.draw(g);
+		level.draw(g);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		//character.update(0.5);
-		//platform.update(0.5);
+		character.update();
 		manager.update();
 		repaint();
+
+		if (character.x < level.x){
+			character.x+=4;
+		}
+		if ((character.x+50) > (level.x+600)){
+			character.x-=4;
+		}
+		if (character.y < level.y){
+			character.y+=4;
+		}
+		if ((character.y+50) > (level.y+475)){
+			character.y-=4;
+		}
 	}
 
 	@Override
@@ -49,19 +62,30 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_A) {
-			character.speed = -5;
+			character.xSpeed-=4;
 		} if (e.getKeyCode() == KeyEvent.VK_D) {
-			character.speed = 5;
-		} if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			character.yVel=-10;
-			platform.yVel=-2;
-			System.out.println("hi");
+			character.xSpeed+=4;
+			
+		} if (e.getKeyCode() == KeyEvent.VK_W) {
+			character.ySpeed-=4;
+			
+		} if (e.getKeyCode() == KeyEvent.VK_S) {
+			character.ySpeed+=4;
+			
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-			character.speed=0;
+		if (e.getKeyCode() == KeyEvent.VK_D) {
+			character.xSpeed-=4;
+		} else if (e.getKeyCode() == KeyEvent.VK_A) {
+			character.xSpeed+=4;
+		} if (e.getKeyCode() == KeyEvent.VK_S) {
+			character.ySpeed-=4;
+		} else if (e.getKeyCode() == KeyEvent.VK_W) {
+			character.ySpeed+=4;
+		}
 	}
 }
