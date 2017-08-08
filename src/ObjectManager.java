@@ -22,6 +22,7 @@ public class ObjectManager {
 				GameObject o = objects.get(i);
 			}
 		purgeObjects();
+		System.out.println();
 	}
 
 	public void draw(Graphics g) {
@@ -38,7 +39,24 @@ public class ObjectManager {
 			}
 		}
 	}
-	
+	int random1 = new Random().nextInt(100);
+	public void createLevel(){
+		int levelType;
+		if (random1 <= 10) {
+			levelType=1;
+		} else if (random1 > 10 && random1 <= 30) {
+			levelType=2;
+		} else if (random1 > 30 && random1 <= 50) {
+			levelType=3;
+		} else if (random1 > 50 && random1 <= 70) {
+			levelType=4;
+		} else if (random1 > 70 && random1 <= 90) {
+			levelType=5;
+		} else if (random1 > 90) {
+			levelType=6;
+		} 
+		addObject(new Level(50, 50, 600, 475, true, 0));
+	}
 
 //	public void manageEnemies() {
 //		if (System.currentTimeMillis() - enemyTimer >= enemySpawnTime) {
