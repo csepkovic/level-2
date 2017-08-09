@@ -4,8 +4,8 @@ import java.awt.Graphics;
 public class Character extends GameObject{
 	int xSpeed;
 	int ySpeed;
-	public Character(int x, int y, int width, int height, int xSpeed, int ySpeed, boolean isAlive) {
-		super(x, y, width, height, isAlive);
+	public Character(int x, int y, int width, int height, int xSpeed, int ySpeed, int health, boolean isAlive) {
+		super(x, y, width, height, health, isAlive);
 		this.xSpeed = xSpeed;
 		this.ySpeed = ySpeed;
 	}
@@ -13,6 +13,9 @@ public class Character extends GameObject{
 		super.update();
 		x+=xSpeed;
 		y+=ySpeed;
+		if (health == 0) {
+			isAlive=false;
+		}
 	}
 	
 	void draw(Graphics g) {

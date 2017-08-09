@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class LevelDoor extends GameObject{
 	int doorType;
-	public LevelDoor(int x, int y, int width, int height, boolean isAlive, int doorType) {
-		super(x, y, width, height, isAlive);
+	public LevelDoor(int x, int y, int width, int height, int health, boolean isAlive, int doorType) {
+		super(x, y, width, height, health, isAlive);
 		this.doorType = doorType;
 	}
 	int getDoorType (){
