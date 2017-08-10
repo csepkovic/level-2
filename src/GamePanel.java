@@ -17,14 +17,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-	Font mysteryTitle;
 	Font title;
 	Character character;
 	Level level;
 	ObjectManager manager;
 	public GamePanel() {
 		timer = new Timer(1000 / 60, this);
-		mysteryTitle = new Font ("W", Font.PLAIN, 50);
+		title = new Font ("W", Font.PLAIN, 50);
 		character = new Character(225, 200, 50, 50, 0, 0, 3, true);
 		manager = new ObjectManager(character);
 		manager.addObject(level);
@@ -32,6 +31,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void startGame() {
 		timer.start();
+		int random = new Random().nextInt(100);
+		level = manager.createLevel(random);
 	}
 	void updateMenuState() {
 		
@@ -56,15 +57,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, 700, 600);
 			g.setColor(Color.YELLOW);
-			g.setFont(mysteryTitle);
-			g.drawString("this means nothiung", 100, 100); 
+			g.setFont(title);
+			g.drawString("OwO", 100, 100); 
 	}
 
 	void drawGameState(Graphics g) {
 		g.fillRect(0, 0, 700, 600);
 		character.draw(g);
-		level = manager.createLevel();
 		level.draw(g);
+		manager.door1.draw(g);
+		manager.door2.draw(g);
+		manager.door3.draw(g);
+		manager.door4.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -84,10 +88,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		character.update();
-		manager.update();
-		repaint();
-
 //		if (character.x < level.x){
 //			character.x+=4;
 //		}
@@ -100,6 +100,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 //		if ((character.y+50) > (level.y+475)){
 //			character.y-=4;
 //		}
+		
+		character.update();
+		manager.characterBoundaries(character, level);
+		repaint();		
+		
 	}
 
 	@Override
@@ -122,6 +127,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		} if (e.getKeyCode() == KeyEvent.VK_S) {
 			character.ySpeed+=4;
 			
+		} if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if (currentState<2){
+			currentState++;
+			} else {
+				currentState=0;
+			}
 		}
 	}
 
