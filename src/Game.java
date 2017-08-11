@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class Game {
 	JFrame frame;
@@ -21,7 +22,15 @@ public class Game {
 		panel.startGame();
 	}
 	public static void main(String[] args) {
-		Game game = new Game(700, 600);
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				Game game = new Game(700, 600);
+			}
+		});
+		
 	}
 }
 
