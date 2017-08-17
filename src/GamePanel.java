@@ -104,6 +104,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 		character.update();
 		manager.characterBoundaries(character, level);
+		manager.checkCollision();
 		repaint();
 
 	}
@@ -119,7 +120,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			character.left = true;
-			
+			System.out.println("left true");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			character.right = true;
