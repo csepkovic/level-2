@@ -19,13 +19,26 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font title;
 	Character character;
 	Level level;
+	LevelDoor door1;
+	LevelDoor door2;
+	LevelDoor door3;
+	LevelDoor door4;
 	ObjectManager manager;
 
 	public GamePanel() {
+		manager = new ObjectManager();
 		timer = new Timer(1000 / 60, this);
 		title = new Font("W", Font.PLAIN, 50);
 		character = new Character(225, 200, 50, 50, 4, 4, 3, true);
-		manager = new ObjectManager(character);
+		manager.addCharacter(character);
+		door1 = new LevelDoor(0, 255, 51, 70, 1, true);
+		manager.addDoor(door1);
+		door2 = new LevelDoor(649, 255, 51, 70, 1, true);
+		manager.addDoor(door2);
+		door3 = new LevelDoor(315, 0, 70, 51, 1, true);
+		manager.addDoor(door3);
+		door4 = new LevelDoor(315, 504, 70, 51, 1, true);
+		manager.addDoor(door4);
 		manager.addObject(level);
 	}
 
@@ -66,10 +79,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, 700, 600);
 		character.draw(g);
 		level.draw(g);
-		manager.door1.draw(g);
-		manager.door2.draw(g);
-		manager.door3.draw(g);
-		manager.door4.draw(g);
+		door1.draw(g);
+		door2.draw(g);
+		door3.draw(g);
+		door4.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
