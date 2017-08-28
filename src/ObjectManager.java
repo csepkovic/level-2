@@ -37,7 +37,8 @@ public class ObjectManager {
 			o.draw(g);
 		}
 	}
-
+	
+	
 	// private void purgeObjects() {
 	// for (int i = 0; i < objects.size(); i++) {
 	// if (!objects.get(i).isAlive) {
@@ -84,54 +85,54 @@ public class ObjectManager {
 	// }
 
 	public void checkCollision() {
-<<<<<<< HEAD
-		for (int i = 0; i < objects.size(); i++) {
-			for (int j = i + 1; j < objects.size(); j++) {
-				GameObject o1 = objects.get(i);
-				GameObject o2 = objects.get(j);
-				
-				if (o1.collisionBox.intersects(o2.collisionBox)) {
-					if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
-						if (o2 == door1) {
-							int levelType = door1.getDoorType();
-							createLevel(levelType);
-						}
-					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
-						if (o1 == door1) {
-							int levelType = door1.getDoorType();
-							createLevel(levelType);
-						}
-					} else if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
-						if (o2 == door2) {
-							int levelType = door2.getDoorType();
-							createLevel(levelType);
-						}
-					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
-						if (o1 == door2) {
-							int levelType = door2.getDoorType();
-							createLevel(levelType);
-						}
-					} else if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
-						if (o2 == door3) {
-							int levelType = door3.getDoorType();
-							createLevel(levelType);
-						}
-					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
-						if (o1 == door3) {
-							int levelType = door3.getDoorType();
-							createLevel(levelType);
-						}
-					} else if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
-						if (o2 == door4) {
-							int levelType = door4.getDoorType();
-							createLevel(levelType);
-						}
-					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
-						if (o1 == door4) {
-							int levelType = door4.getDoorType();
-							createLevel(levelType);
-						}
-					}
+
+//		for (int i = 0; i < objects.size(); i++) {
+//			for (int j = i + 1; j < objects.size(); j++) {
+//				GameObject o1 = objects.get(i);
+//				GameObject o2 = objects.get(j);
+//				
+//				if (o1.collisionBox.intersects(o2.collisionBox)) {
+//					if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
+//						if (o2 == door1) {
+//							int levelType = door1.getDoorType();
+//							createLevel(levelType);
+//						}
+//					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
+//						if (o1 == door1) {
+//							int levelType = door1.getDoorType();
+//							createLevel(levelType);
+//						}
+//					} else if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
+//						if (o2 == door2) {
+//							int levelType = door2.getDoorType();
+//							createLevel(levelType);
+//						}
+//					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
+//						if (o1 == door2) {
+//							int levelType = door2.getDoorType();
+//							createLevel(levelType);
+//						}
+//					} else if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
+//						if (o2 == door3) {
+//							int levelType = door3.getDoorType();
+//							createLevel(levelType);
+//						}
+//					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
+//						if (o1 == door3) {
+//							int levelType = door3.getDoorType();
+//							createLevel(levelType);
+//						}
+//					} else if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
+//						if (o2 == door4) {
+//							int levelType = door4.getDoorType();
+//							createLevel(levelType);
+//						}
+//					} else if ((o2 instanceof Character && o1 instanceof LevelDoor)) {
+//						if (o1 == door4) {
+//							int levelType = door4.getDoorType();
+//							createLevel(levelType);
+//						}
+//					}
 					// else if ((o1 instanceof Alien && o2 instanceof
 					// RocketShip)
 					// || (o2 instanceof Alien && o1 instanceof RocketShip)) {
@@ -165,12 +166,14 @@ public class ObjectManager {
 					// } else {
 					// ((RocketShip)o1).speed+=2;
 					// }
-				}
-=======
+//				}
 		for (LevelDoor d: doors) {
 			if (ch.collisionBox.intersects(d.collisionBox)) {
-				
->>>>>>> ca90681a92eb37ed31276c83caaec036c9979b6c
+				int id = d.getDoorType();
+				reset();
+				createLevel(id);
+				ch.reset();
+				System.out.println("collision");
 			}
 		}
 //		for (int i = 0; i < objects.size(); i++) {

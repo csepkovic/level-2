@@ -38,4 +38,9 @@ public class Character extends GameObject {
 		g.setColor(Color.WHITE);
 		g.fill3DRect(x, y, width, height, true);
 	}
+	
+	void reset () {
+		x = 225;
+		y = 200;
+	}
 }
