@@ -83,6 +83,7 @@ public class ObjectManager {
 			for (int j = i + 1; j < objects.size(); j++) {
 				GameObject o1 = objects.get(i);
 				GameObject o2 = objects.get(j);
+				
 				if (o1.collisionBox.intersects(o2.collisionBox)) {
 					if ((o1 instanceof Character && o2 instanceof LevelDoor)) {
 						if (o2 == door1) {
