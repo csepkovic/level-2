@@ -4,10 +4,10 @@ import java.awt.Graphics;
 public class Character extends GameObject {
 	int xSpeed;
 	int ySpeed;
-	boolean up = false;
-	boolean down = false;
-	boolean right = false;
-	boolean left = false;
+	static boolean up = false;
+	static boolean down = false;
+	static boolean right = false;
+	static boolean left = false;
 
 	public Character(int x, int y, int width, int height, int xSpeed, int ySpeed, int health, boolean isAlive) {
 		super(x, y, width, height, health, isAlive);
@@ -32,6 +32,10 @@ public class Character extends GameObject {
 		if (left == true) {
 			x-=xSpeed;
 		} 
+//		up = false;
+//		down = false;
+//		left = false;
+//		right = false;
 	}
 
 	void draw(Graphics g) {

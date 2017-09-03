@@ -3,6 +3,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
@@ -15,7 +17,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
-	int currentState = MENU_STATE;
+	int currentState = GAME_STATE;
 	Font title;
 	Character character;
 	Level level;
@@ -31,11 +33,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		title = new Font("W", Font.PLAIN, 50);
 		character = new Character(225, 200, 50, 50, 4, 4, 3, true);
 		manager.addCharacter(character);
-		door1 = new LevelDoor(0, 255, 51, 70, 1, true);
+		door1 = new LevelDoor(10, 255, 51, 70, 1, true);
 		manager.addDoor(door1);
-		door2 = new LevelDoor(649, 255, 51, 70, 1, true);
+		door2 = new LevelDoor(639, 255, 51, 70, 1, true);
 		manager.addDoor(door2);
-		door3 = new LevelDoor(315, 0, 70, 51, 1, true);
+		door3 = new LevelDoor(315, 10, 70, 51, 1, true);
 		manager.addDoor(door3);
 		door4 = new LevelDoor(315, 504, 70, 51, 1, true);
 		manager.addDoor(door4);
@@ -46,6 +48,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		timer.start();
 		int random = new Random().nextInt(100);
 		level = manager.createLevel(random);
+		
 	}
 
 	void updateMenuState() {
@@ -79,10 +82,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, 700, 600);
 		character.draw(g);
 		level.draw(g);
-		door1.draw(g);
-		door2.draw(g);
-		door3.draw(g);
-		door4.draw(g);
+		manager.drawDoors(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -131,49 +131,50 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getKeyCode() == KeyEvent.VK_A) {
-			character.left = true;
-			System.out.println("left true");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_D) {
-			character.right = true;
-			System.out.println("right true");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			character.up = true;
-			System.out.println("up true");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_S) {
-			character.down = true;
-			System.out.println("down true");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			if (currentState < 2) {
-				currentState++;
-			} else {
-				currentState = 0;
-			}
-		}
+//		if (e.getKeyCode() == KeyEvent.VK_A) {
+//			character.left = true;
+//			System.out.println("left true");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_D) {
+//			character.right = true;
+//			System.out.println("right true");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_W) {
+//			character.up = true;
+//			System.out.println("up true");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_S) {
+//			character.down = true;
+//			System.out.println("down true");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+//			if (currentState < 2) {
+//				currentState++;
+//			} else {
+//				currentState = 0;
+//			}
+//		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_D) {
-			character.right = false;
+			Character.right = false;
 			System.out.println("right false");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_A) {
-			character.left = false;
+			Character.left = false;
 			System.out.println("left false");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_S) {
-			character.down = false;
+			Character.down = false;
 			System.out.println("down false");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_W) {
-			character.up = false;
+			Character.up = false;
 			System.out.println("up false");
 		}
 	}
+
 }
