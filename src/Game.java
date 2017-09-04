@@ -41,13 +41,13 @@ public class Game {
 	      int condition = JComponent.WHEN_IN_FOCUSED_WINDOW;
 	      InputMap inputMap = panel.getInputMap(condition);
 
-	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), UP);
+	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0), UP);
 	      actionMap.put(UP, new UpAction());
-	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), DOWN);
+	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0), DOWN);
 	      actionMap.put(DOWN, new DownAction());
-	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), LEFT);
+	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0), LEFT);
 	      actionMap.put(LEFT, new LeftAction());
-	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), RIGHT);
+	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0), RIGHT);
 	      actionMap.put(RIGHT, new RightAction());
 	}
 	public static void main(String[] args) {

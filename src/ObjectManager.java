@@ -51,16 +51,22 @@ public class ObjectManager {
 		int levelType = random1;
 		if (random1 <= 10) {
 			levelType = 1;
+			//bonus level
 		} else if (random1 > 10 && random1 <= 30) {
 			levelType = 2;
+			//regular level
 		} else if (random1 > 30 && random1 <= 50) {
 			levelType = 3;
+			//boss level
 		} else if (random1 > 50 && random1 <= 70) {
 			levelType = 4;
+			//slightly harder level
 		} else if (random1 > 70 && random1 <= 90) {
 			levelType = 5;
+			//super hard level
 		} else if (random1 > 90) {
 			levelType = 6;
+			//space level
 		}
 		LevelDoor door1 = new LevelDoor(10, 255, 51, 70, 1, true);
 		addDoor(door1);
