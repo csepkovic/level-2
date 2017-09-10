@@ -7,8 +7,11 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -26,6 +29,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	LevelDoor door3;
 	LevelDoor door4;
 	ObjectManager manager;
+	public static BufferedImage pixelBlood1;
+	public static BufferedImage space;
 
 	public GamePanel() {
 		manager = new ObjectManager();
@@ -42,11 +47,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		door4 = new LevelDoor(315, 504, 70, 51, 1, true);
 		manager.addDoor(door4);
 		manager.addObject(level);
+		try {
+			pixelBlood1 = ImageIO.read(this.getClass().getResourceAsStream("pixelBlood1.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			space = ImageIO.read(this.getClass().getResourceAsStream("space.gif"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void startGame() {
 		timer.start();
-		int random = new Random().nextInt(100);
+		int random = 95;
 		level = manager.createLevel(random);
 		
 	}
@@ -80,9 +97,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void drawGameState(Graphics g) {
 		g.fillRect(0, 0, 700, 600);
-		character.draw(g);
 		level.draw(g);
 		manager.drawDoors(g);
+		character.draw(g);
 	}
 
 	void drawEndState(Graphics g) {

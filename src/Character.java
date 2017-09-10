@@ -2,8 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Character extends GameObject {
-	int xSpeed;
-	int ySpeed;
+	static int xSpeed;
+	static int ySpeed;
 	static boolean up = false;
 	static boolean down = false;
 	static boolean right = false;

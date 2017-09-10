@@ -8,20 +8,40 @@ public class Level extends GameObject  {
 		super(x, y, width, height, health, isAlive);
 		this.levelType = levelType;
 	}
+	int number = 0;
+	Color color;
 	void draw(Graphics g) {
 		g.drawRect(x, y, width, height);
 		if (levelType == 1) {
 			int random1 = new Random().nextInt(155);
-			random1+=100;
+			random1+=50;
 			int random2 = new Random().nextInt(155);
-			random2+=100;
+			random2+=50;
 			int random3 = new Random().nextInt(155);
-			random3+=100;
-			Color color = new Color(random1, random2, random3);
-			g.setColor(color);;
-			g.fillRect(x, y, width, height);
+			random3+=50;
+			if (number%10==0){
+			color = new Color(random1, random2, random3);
+			}
+		} else if (levelType == 2) {
+			color = new Color(50, 50, 50);
+		} else if (levelType == 3) {
+			color = new Color(80, 80, 90);
+		} else if (levelType == 4) {
+			color = new Color(60, 50, 50);
+		} else if (levelType == 5) {
+			color = new Color(150, 60, 60);
+		} else if (levelType == 6) {
+			color = new Color(0, 0, 0);
 		}
-	}
+		g.setColor(color);
+		g.fillRect(x, y, width, height);
+		number++;
+		if (levelType == 5) {
+			g.drawImage(GamePanel.pixelBlood1, x-20, y-20, width, height, null);
+		} if (levelType == 6) {
+			g.drawImage(GamePanel.space, x, y, width, height, null);
+		}
+		}
 	
 	void update() {
 		

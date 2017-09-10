@@ -93,6 +93,7 @@ public class ObjectManager {
 	public void checkCollision() {
 		for (LevelDoor d: doors) {
 			if (ch.collisionBox.intersects(d.collisionBox)) {
+				
 				reset(d);
 				ch.reset();
 				System.out.println("collision");
@@ -105,19 +106,15 @@ public class ObjectManager {
 	public void characterBoundaries(Character c, Level l) {
 		if (c.x <= l.x) {
 			c.left=false;
-			c.right = true;
 		}
 		if ((c.x + 50) >= (l.x + 600)) {
 			c.right=false;
-			c.left = true;
 		}
 		if (c.y <= l.y) {
 			c.up=false;
-			c.down = true;
 		}
 		if ((c.y + 50) >= (l.y + 475)) {
 			c.down=false;
-			c.up = true;
 		}
 	}
 
