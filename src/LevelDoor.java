@@ -37,9 +37,7 @@ public class LevelDoor extends GameObject{
 			g.setColor(Color.RED);
 			g.fillRect(x, y, width, height);
 		} else if (doorType > 90) {
-			g.setColor(Color.WHITE);
-			g.drawRect(x, y, width, height);
-			//Put stars here
+			g.drawImage(GamePanel.pixelSpace, x, y, width, height, null);
 		}
 	}
 	void update(){

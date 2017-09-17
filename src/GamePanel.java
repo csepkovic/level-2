@@ -31,6 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	ObjectManager manager;
 	public static BufferedImage pixelBlood1;
 	public static BufferedImage space;
+	public static BufferedImage pixelSpace;
 
 	public GamePanel() {
 		manager = new ObjectManager();
@@ -59,11 +60,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			pixelSpace = ImageIO.read(this.getClass().getResourceAsStream("pixelSpace.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void startGame() {
 		timer.start();
-		int random = 95;
+		int random = new Random().nextInt(100);
 		level = manager.createLevel(random);
 		
 	}

@@ -93,7 +93,6 @@ public class ObjectManager {
 	public void checkCollision() {
 		for (LevelDoor d: doors) {
 			if (ch.collisionBox.intersects(d.collisionBox)) {
-				
 				reset(d);
 				ch.reset();
 				System.out.println("collision");
@@ -130,7 +129,7 @@ public class ObjectManager {
 		reset();
 		int id = d.getDoorType();
 		createLevel(id);
-
+		System.out.println("new level");
 	}
 
 	public void reset() {
