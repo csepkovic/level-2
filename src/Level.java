@@ -28,9 +28,9 @@ public class Level extends GameObject {
 		} else if (levelType == 2) {
 			color = new Color(50, 50, 50);
 		} else if (levelType == 3) {
-			color = new Color(80, 80, 90);
+			color = new Color(70, 50, 50);
 		} else if (levelType == 4) {
-			color = new Color(60, 50, 50);
+			color = new Color(40, 40, 40);
 		} else if (levelType == 5) {
 			color = new Color(180, 0, 0);
 		} else if (levelType == 6) {
@@ -45,6 +45,7 @@ public class Level extends GameObject {
 		if (levelType == 6) {
 			g.drawImage(GamePanel.space, x, y, width, height, null);
 		}
+		System.out.println(levelType);
 	}
 
 	void update() {

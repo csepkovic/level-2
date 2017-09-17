@@ -5,6 +5,7 @@ import java.util.Random;
 public class ObjectManager {
 	ArrayList<GameObject> objects;
 	Character ch;
+	Level l;
 	ArrayList<LevelDoor> doors = new ArrayList<LevelDoor>();
 
 	public ObjectManager() {
@@ -128,7 +129,27 @@ public class ObjectManager {
 	public void reset(LevelDoor d) {
 		reset();
 		int id = d.getDoorType();
-		createLevel(id);
+		int levelType;
+		if (id <= 10) {
+			levelType = 1;
+			//bonus level
+		} else if (id > 10 && id <= 30) {
+			levelType = 2;
+			//regular level
+		} else if (id > 30 && id <= 50) {
+			levelType = 3;
+			//boss level
+		} else if (id > 50 && id <= 70) {
+			levelType = 4;
+			//slightly harder level
+		} else if (id > 70 && id <= 90) {
+			levelType = 5;
+			//super hard level
+		} else if (id > 90) {
+			levelType = 6;
+			//space level
+		}
+//		level.levelType = levelType;
 		System.out.println("new level");
 	}
 

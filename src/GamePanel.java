@@ -21,9 +21,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = GAME_STATE;
+	final int BONUS_LEVEL = 1;
+	final int REGULAR_LEVEL = 2;
+	final int HARD_LEVEL = 3;
+	final int BOSS_LEVEL = 4;
+	final int IMPOSSIBLE_LEVEL = 5;
+	final int SPACE_LEVEL = 6;
+	int currentLevel = REGULAR_LEVEL;
 	Font title;
 	Character character;
-	Level level;
+	public Level level;
 	LevelDoor door1;
 	LevelDoor door2;
 	LevelDoor door3;
@@ -48,6 +55,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		door4 = new LevelDoor(315, 504, 70, 51, 1, true);
 		manager.addDoor(door4);
 		manager.addObject(level);
+		
 		try {
 			pixelBlood1 = ImageIO.read(this.getClass().getResourceAsStream("pixelBlood1.png"));
 		} catch (IOException e) {
@@ -70,9 +78,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void startGame() {
 		timer.start();
-		int random = new Random().nextInt(100);
-		level = manager.createLevel(random);
-		
+		level = manager.createLevel(20);
 	}
 
 	void updateMenuState() {
@@ -200,5 +206,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			System.out.println("up false");
 		}
 	}
+	
 
 }
