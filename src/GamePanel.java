@@ -113,6 +113,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		level.draw(g);
 		manager.drawDoors(g);
 		character.draw(g);
+//		System.out.println("update");
 	}
 
 	void drawEndState(Graphics g) {
@@ -149,7 +150,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.characterBoundaries(character, level);
 		manager.checkCollision();
 		repaint();
-
 	}
 
 	@Override

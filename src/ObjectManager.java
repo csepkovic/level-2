@@ -162,6 +162,7 @@ public class ObjectManager {
 		// TODO Auto-generated method stub
 		for 	 (LevelDoor d: doors) {
 			d.draw(g);
+			System.out.println("doors");
 		}
 	}
 }

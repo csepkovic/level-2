@@ -45,7 +45,7 @@ public class Level extends GameObject {
 		if (levelType == 6) {
 			g.drawImage(GamePanel.space, x, y, width, height, null);
 		}
-		System.out.println(levelType);
+//		System.out.println(levelType);
 	}
 
 	void update() {
