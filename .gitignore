@@ -1,1 +1,10 @@
 /bin/
+*.xml
+*.version
+*.prefs
+*.xmi
+.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache
+.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache
+.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache
+.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat
+.metadata/.log

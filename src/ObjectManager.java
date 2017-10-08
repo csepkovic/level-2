@@ -79,7 +79,10 @@ public class ObjectManager {
 		addDoor(door4);
 		Level l = new Level(50, 50, 600, 475, 1, true, levelType);
 		addObject(l);
+		System.out.println("new");
+		addObject(l);
 		return l;
+		
 	}
 
 	// public void manageEnemies() {
@@ -129,7 +132,7 @@ public class ObjectManager {
 	public void reset(LevelDoor d) {
 		reset();
 		int id = d.getDoorType();
-		int levelType;
+		int levelType = 0;
 		if (id <= 10) {
 			levelType = 1;
 			//bonus level
@@ -149,20 +152,21 @@ public class ObjectManager {
 			levelType = 6;
 			//space level
 		}
-//		level.levelType = levelType;
-		System.out.println("new level");
+		l = createLevel(levelType);
+		System.out.println(levelType);
 	}
 
 	public void reset() {
 		objects.clear();
 		System.out.println("reset");
+		
 	}
 
 	public void drawDoors(Graphics g) {
 		// TODO Auto-generated method stub
 		for 	 (LevelDoor d: doors) {
 			d.draw(g);
-			System.out.println("doors");
+//			System.out.println("doors");
 		}
 	}
 }
