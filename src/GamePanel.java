@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	int currentLevel = REGULAR_LEVEL;
 	Font title;
 	Character character;
-	public Level level;
+	public static Level level;
 	LevelDoor door1;
 	LevelDoor door2;
 	LevelDoor door3;
@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager = new ObjectManager();
 		timer = new Timer(1000 / 60, this);
 		title = new Font("W", Font.PLAIN, 50);
-		character = new Character(225, 200, 50, 50, 4, 4, 3, true);
+		character = new Character(325, 275, 50, 50, 4, 4, 3, true);
 		manager.addCharacter(character);
 		door1 = new LevelDoor(10, 255, 51, 70, 1, true);
 		manager.addDoor(door1);
@@ -80,7 +80,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		timer.start();
 		level = manager.createLevel(20);
 	}
-
+	
 	void updateMenuState() {
 
 	}
@@ -90,10 +90,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.checkCollision();
 		if (character.isAlive == false) {
 			currentState = END_STATE;
-			manager.reset();
-			character = new Character(225, 200, 50, 50, 0, 0, 3, true);
-			manager.addObject(character);
+//			manager.reset();
+//			character = new Character(225, 200, 50, 50, 0, 0, 3, true);
+//			manager.addObject(character);
 		}
+		
 	}
 
 	void updateEndState() {
@@ -133,19 +134,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		// if (character.x < level.x){
-		// character.x+=4;
-		// }
-		// if ((character.x+50) > (level.x+600)){
-		// character.x-=4;
-		// }
-		// if (character.y < level.y){
-		// character.y+=4;
-		// }
-		// if ((character.y+50) > (level.y+475)){
-		// character.y-=4;
-		// }
-
 		character.update();
 		manager.characterBoundaries(character, level);
 		manager.checkCollision();
@@ -160,30 +148,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-//		if (e.getKeyCode() == KeyEvent.VK_A) {
-//			character.left = true;
-//			System.out.println("left true");
-//		}
-//		if (e.getKeyCode() == KeyEvent.VK_D) {
-//			character.right = true;
-//			System.out.println("right true");
-//		}
-//		if (e.getKeyCode() == KeyEvent.VK_W) {
-//			character.up = true;
-//			System.out.println("up true");
-//		}
-//		if (e.getKeyCode() == KeyEvent.VK_S) {
-//			character.down = true;
-//			System.out.println("down true");
-//		}
-//		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//			if (currentState < 2) {
-//				currentState++;
-//			} else {
-//				currentState = 0;
-//			}
-//		}
+		
 	}
 
 	@Override

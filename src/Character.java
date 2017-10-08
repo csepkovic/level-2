@@ -44,7 +44,7 @@ public class Character extends GameObject {
 	}
 	
 	void reset () {
-		x = 225;
-		y = 200;
+		x = 325;
+		y = 250;
 	}
 }

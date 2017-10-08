@@ -40,13 +40,13 @@ public class ObjectManager {
 	}
 	
 	
-	// private void purgeObjects() {
-	// for (int i = 0; i < objects.size(); i++) {
-	// if (!objects.get(i).isAlive) {
-	// objects.remove(i);
-	// }
-	// }
-	// }
+//	 public void purgeObjects() {
+//	 for (int i = 0; i < objects.size(); i++) {
+//	 if (!objects.get(i).isAlive) {
+//	 objects.remove(i);
+//	 }
+//	 }
+//	 }
 	public Level createLevel(int random1) {
 		doors.clear();
 		int levelType = random1;
@@ -79,20 +79,12 @@ public class ObjectManager {
 		addDoor(door4);
 		Level l = new Level(50, 50, 600, 475, 1, true, levelType);
 		addObject(l);
-		System.out.println("new");
+		System.out.println(levelType);
 		addObject(l);
 		return l;
 		
 	}
 
-	// public void manageEnemies() {
-	// if (System.currentTimeMillis() - enemyTimer >= enemySpawnTime) {
-	// addObject(new Alien(new Random().nextInt(LeagueInvaders.width), 0, 50,
-	// 50));
-	// enemyTimer = System.currentTimeMillis();
-	// enemySpawnTime--;
-	// }
-	// }
 
 	public void checkCollision() {
 		for (LevelDoor d: doors) {
@@ -132,41 +124,19 @@ public class ObjectManager {
 	public void reset(LevelDoor d) {
 		reset();
 		int id = d.getDoorType();
-		int levelType = 0;
-		if (id <= 10) {
-			levelType = 1;
-			//bonus level
-		} else if (id > 10 && id <= 30) {
-			levelType = 2;
-			//regular level
-		} else if (id > 30 && id <= 50) {
-			levelType = 3;
-			//boss level
-		} else if (id > 50 && id <= 70) {
-			levelType = 4;
-			//slightly harder level
-		} else if (id > 70 && id <= 90) {
-			levelType = 5;
-			//super hard level
-		} else if (id > 90) {
-			levelType = 6;
-			//space level
-		}
-		l = createLevel(levelType);
-		System.out.println(levelType);
+		GamePanel.level = createLevel(id);
+		System.out.println(id);
 	}
 
 	public void reset() {
 		objects.clear();
 		System.out.println("reset");
-		
 	}
 
 	public void drawDoors(Graphics g) {
 		// TODO Auto-generated method stub
 		for 	 (LevelDoor d: doors) {
 			d.draw(g);
-//			System.out.println("doors");
 		}
 	}
 }
