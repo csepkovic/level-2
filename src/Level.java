@@ -9,7 +9,8 @@ public class Level extends GameObject {
 		super(x, y, width, height, health, isAlive);
 		this.levelType = levelType;
 	}
-
+	Enemy1 enemy;
+	Enemy1 enemy1;
 	int number = 0;
 	Color color;
 
@@ -26,11 +27,15 @@ public class Level extends GameObject {
 				color = new Color(random1, random2, random3);
 			}
 		} else if (levelType == 2) {
-			color = new Color(50, 50, 50);
-		} else if (levelType == 3) {
-			color = new Color(70, 50, 50);
-		} else if (levelType == 4) {
 			color = new Color(40, 40, 40);
+			if (enemy == null && enemy1 == null) {
+			enemy = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 100, 25, 1, 25, true, 1, 1);
+			enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 1, 1);
+			}
+		} else if (levelType == 3) {
+			color = new Color(50, 50, 50);
+		} else if (levelType == 4) {
+			color = new Color(70, 60, 60);
 		} else if (levelType == 5) {
 			color = new Color(180, 0, 0);
 		} else if (levelType == 6) {
@@ -50,5 +55,13 @@ public class Level extends GameObject {
 
 	void update() {
 
+	}
+	void drawEnemy (Graphics g) {
+		if (enemy != null && enemy1 != null) {
+		enemy.draw(g);
+		enemy1.draw(g);
+		enemy.update();
+		enemy1.update();
+	}
 	}
 }

@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int SPACE_LEVEL = 6;
 	int currentLevel = REGULAR_LEVEL;
 	Font title;
-	Character character;
+	static Character character;
 	public static Level level;
 	LevelDoor door1;
 	LevelDoor door2;
@@ -107,6 +107,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.YELLOW);
 		g.setFont(title);
 		g.drawString("Idk a name for this game yet", 0, 100);
+		
 	}
 
 	void drawGameState(Graphics g) {
@@ -115,6 +116,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.drawDoors(g);
 		character.draw(g);
 //		System.out.println("update");
+		level.drawEnemy(g);
 	}
 
 	void drawEndState(Graphics g) {

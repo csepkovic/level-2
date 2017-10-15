@@ -24,7 +24,7 @@ public class LevelDoor extends GameObject{
 		} 
 		else if (doorType > 10 && doorType <= 30) {
 			g.setColor(Color.WHITE);
-			g.drawRect(x, y, width, height);
+			g.fillRect(x, y, width, height);
 		} 
 		else if (doorType > 30 && doorType <= 50) {
 			g.setColor(Color.WHITE);
