@@ -11,6 +11,8 @@ public class Level extends GameObject {
 	}
 	Enemy1 enemy;
 	Enemy1 enemy1;
+	Enemy1 enemy2;
+	Enemy1 enemy3;
 	int number = 0;
 	Color color;
 
@@ -62,6 +64,11 @@ public class Level extends GameObject {
 		enemy1.draw(g);
 		enemy.update();
 		enemy1.update();
+		if (enemy2 != null) {
+			if (enemy3 != null) {
+				
+			}
+		}
 	}
 	}
 }

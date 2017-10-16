@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 public class Enemy1 extends GameObject{
 	int ySpeed;
@@ -15,8 +16,13 @@ public class Enemy1 extends GameObject{
 		g.setColor(Color.MAGENTA);
 		g.drawRect(x, y, width, height);
 	}
-	
+	int random;
+	int random1;
 	void update() {
+		random = new Random().nextInt(3);
+		random-=1;
+		random1 = new Random().nextInt(3);
+		random1-=1;
 		if (GamePanel.character.x > x) {
 			x+=xSpeed;
 		} else if (GamePanel.character.x < x) {
@@ -27,6 +33,8 @@ public class Enemy1 extends GameObject{
 		} else if (GamePanel.character.y < y) {
 			y-=ySpeed;
 		}
+		x+=random;
+		y+=random1;
 	}
 
 }
