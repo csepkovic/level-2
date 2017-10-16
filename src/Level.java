@@ -36,6 +36,11 @@ public class Level extends GameObject {
 			}
 		} else if (levelType == 3) {
 			color = new Color(50, 50, 50);
+			if (enemy == null && enemy1 == null && enemy2 == null) {
+				enemy = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 100, 25, 1, 25, true, 1, 1);
+				enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 2, 1);
+				enemy2 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 1, 2);
+				}
 		} else if (levelType == 4) {
 			color = new Color(70, 60, 60);
 		} else if (levelType == 5) {
@@ -65,6 +70,8 @@ public class Level extends GameObject {
 		enemy.update();
 		enemy1.update();
 		if (enemy2 != null) {
+			enemy2.draw(g);
+			enemy2.update();
 			if (enemy3 != null) {
 				
 			}
