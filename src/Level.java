@@ -32,22 +32,130 @@ public class Level extends GameObject {
 			color = new Color(40, 40, 40);
 			if (enemy == null && enemy1 == null) {
 			enemy = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 100, 25, 1, 25, true, 1, 1);
-			enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 1, 1);
+			if (enemy.x > 350 && enemy.x < 400) {
+				enemy.x+=50;
+			}
+			if (enemy.x > 300 && enemy.x < 350) {
+				enemy.x-=50;
+			}
+			if (enemy.y > 300 && enemy.y < 3500) {
+				enemy.y+=50;
+			}
+			if (enemy.y > 250 && enemy.y < 300) {
+				enemy.y-=50;
+			}
+			enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 2, 1);
+			if (enemy1.x > 350 && enemy1.x < 400) {
+				enemy1.x+=50;
+			}
+			if (enemy1.x > 300 && enemy1.x < 350) {
+				enemy1.x-=50;
+			}
+			if (enemy1.y > 300 && enemy1.y < 3500) {
+				enemy1.y+=50;
+			}
+			if (enemy1.y > 250 && enemy1.y < 300) {
+				enemy1.y-=50;
+			}
 			}
 		} else if (levelType == 3) {
 			color = new Color(50, 50, 50);
 			if (enemy == null && enemy1 == null && enemy2 == null) {
 				enemy = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 100, 25, 1, 25, true, 1, 1);
+				if (enemy.x > 350 && enemy.x < 400) {
+					enemy.x+=50;
+				}
+				if (enemy.x > 300 && enemy.x < 350) {
+					enemy.x-=50;
+				}
+				if (enemy.y > 300 && enemy.y < 3500) {
+					enemy.y+=50;
+				}
+				if (enemy.y > 250 && enemy.y < 300) {
+					enemy.y-=50;
+				}
 				enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 2, 1);
+				if (enemy1.x > 350 && enemy1.x < 400) {
+					enemy1.x+=50;
+				}
+				if (enemy1.x > 300 && enemy1.x < 350) {
+					enemy1.x-=50;
+				}
+				if (enemy1.y > 300 && enemy1.y < 3500) {
+					enemy1.y+=50;
+				}
+				if (enemy1.y > 250 && enemy1.y < 300) {
+					enemy1.y-=50;
+				}
 				enemy2 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 1, 2);
+				if (enemy2.x > 350 && enemy2.x < 400) {
+					enemy2.x+=50;
+				}
+				if (enemy2.x > 300 && enemy2.x < 350) {
+					enemy2.x-=50;
+				}
+				if (enemy2.y > 300 && enemy2.y < 3500) {
+					enemy2.y+=50;
+				}
+				if (enemy2.y > 250 && enemy2.y < 300) {
+					enemy2.y-=50;
+				}
 				}
 		} else if (levelType == 4) {
 			color = new Color(70, 60, 60);
 			if (enemy == null && enemy1 == null && enemy2 == null && enemy3 == null) {
 				enemy = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 100, 25, 1, 25, true, 2, 2);
+				if (enemy.x > 350 && enemy.x < 400) {
+					enemy.x+=50;
+				}
+				if (enemy.x > 300 && enemy.x < 350) {
+					enemy.x-=50;
+				}
+				if (enemy.y > 300 && enemy.y < 3500) {
+					enemy.y+=50;
+				}
+				if (enemy.y > 250 && enemy.y < 300) {
+					enemy.y-=50;
+				}
 				enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 2, 1);
+				if (enemy1.x > 350 && enemy1.x < 400) {
+					enemy1.x+=50;
+				}
+				if (enemy1.x > 300 && enemy1.x < 350) {
+					enemy1.x-=50;
+				}
+				if (enemy1.y > 300 && enemy1.y < 3500) {
+					enemy1.y+=50;
+				}
+				if (enemy1.y > 250 && enemy1.y < 300) {
+					enemy1.y-=50;
+				}
 				enemy2 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 1, 2);
+				if (enemy2.x > 350 && enemy2.x < 400) {
+					enemy2.x+=50;
+				}
+				if (enemy2.x > 300 && enemy2.x < 350) {
+					enemy2.x-=50;
+				}
+				if (enemy2.y > 300 && enemy2.y < 3500) {
+					enemy2.y+=50;
+				}
+				if (enemy2.y > 250 && enemy2.y < 300) {
+					enemy2.y-=50;
+				}
 				enemy3 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true, 1, 1);
+				if (enemy3.x > 350 && enemy3.x < 400) {
+					enemy3.x+=50;
+				}
+				if (enemy3.x > 300 && enemy3.x < 350) {
+					enemy3.x-=50;
+				}
+				if (enemy3.y > 300 && enemy3.y < 3500) {
+					enemy3.y+=50;
+				}
+				if (enemy3.y > 250 && enemy3.y < 300) {
+					enemy3.y-=50;
+				}
 				}
 		} else if (levelType == 5) {
 			color = new Color(180, 0, 0);

@@ -18,7 +18,9 @@ public class Enemy1 extends GameObject{
 	}
 	int random;
 	int random1;
+	int probability;
 	void update() {
+		probability = new Random().nextInt(5);
 		random = new Random().nextInt(3);
 		random-=1;
 		random1 = new Random().nextInt(3);
@@ -35,6 +37,15 @@ public class Enemy1 extends GameObject{
 		}
 		x+=random;
 		y+=random1;
+		if (probability == 1) {
+			x+=3;
+		} else if (probability == 2) {
+			x-=3;
+		} else if (probability == 3) {
+			y+=3;
+		} else if (probability == 4) {
+			y-=3;
+		}
 	}
 
 }
