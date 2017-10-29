@@ -7,7 +7,8 @@ public class ObjectManager {
 	Character ch;
 	Level l;
 	ArrayList<LevelDoor> doors = new ArrayList<LevelDoor>();
-
+ 
+	
 	public ObjectManager() {
 		objects = new ArrayList<GameObject>();
 	}
@@ -95,8 +96,14 @@ public class ObjectManager {
 				break;
 			}
 		}
-		
-
+		if (enemies != null) {
+		for (Enemy1 enemy: l.getEnemies()) {
+			if (ch.collisionBox.intersects(enemy.collisionBox)) {
+				System.out.println("enemy collision");
+				break;
+			}
+		}
+		}
 	}
 
 	public void characterBoundaries(Character c, Level l) {
