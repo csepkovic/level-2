@@ -145,48 +145,49 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			Character.right = true;
-			System.out.println("right true");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			Character.left = true;
-			System.out.println("left true");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			Character.down = true;
-			System.out.println("down true");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			Character.up = true;
-			System.out.println("up true");
-		}
+		
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
+//		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+//			Character.right = true;
+//			Character.left = false;
+//			System.out.println("right true");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+//			Character.left = true;
+//			System.out.println("left true");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+//			Character.down = true;
+//			System.out.println("down true");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_UP) {
+//			Character.up = true;
+//			System.out.println("up true");
+//		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			Character.right = false;
-			System.out.println("right false");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			Character.left = false;
-			System.out.println("left false");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			Character.down = false;
-			System.out.println("down false");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			Character.up = false;
-			System.out.println("up false");
-		}
+//		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+//			Character.right = false;
+//			System.out.println("right false");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+//			Character.left = false;
+//			System.out.println("left false");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+//			Character.down = false;
+//			System.out.println("down false");
+//		}
+//		if (e.getKeyCode() == KeyEvent.VK_UP) {
+//			Character.up = false;
+//			System.out.println("up false");
+//		}
 	}
 	
 

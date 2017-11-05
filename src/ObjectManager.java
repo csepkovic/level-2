@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,10 +8,11 @@ public class ObjectManager {
 	Character ch;
 	Level l;
 	ArrayList<LevelDoor> doors = new ArrayList<LevelDoor>();
- 
+	
 	
 	public ObjectManager() {
 		objects = new ArrayList<GameObject>();
+		this.l=GamePanel.level;
 	}
 	
 	void addCharacter(Character c) {
@@ -82,8 +84,8 @@ public class ObjectManager {
 		addObject(l);
 		System.out.println(levelType);
 		addObject(l);
+		this.l=l;
 		return l;
-		
 	}
 
 
@@ -96,13 +98,17 @@ public class ObjectManager {
 				break;
 			}
 		}
-		if (enemies != null) {
+		if (l != null ) {
+			if(l.getEnemies()!= null && ch!=null) {
 		for (Enemy1 enemy: l.getEnemies()) {
+			if(enemy!= null) {
 			if (ch.collisionBox.intersects(enemy.collisionBox)) {
 				System.out.println("enemy collision");
 				break;
 			}
 		}
+		}
+			}
 		}
 	}
 
