@@ -94,20 +94,22 @@ public class ObjectManager {
 			if (ch.collisionBox.intersects(d.collisionBox)) {
 				reset(d);
 				ch.reset();
+				ch.health = 3;
 				System.out.println("collision");
 				break;
 			}
 		}
 		if (l != null ) {
 			if(l.getEnemies()!= null && ch!=null) {
-		for (Enemy1 enemy: l.getEnemies()) {
-			if(enemy!= null) {
-			if (ch.collisionBox.intersects(enemy.collisionBox)) {
-				System.out.println("enemy collision");
-				break;
-			}
-		}
-		}
+				for (Enemy1 enemy: l.getEnemies()) {
+					if(enemy!= null) {
+						if (ch.collisionBox.intersects(enemy.collisionBox)) {
+							System.out.println("enemy collision");
+//							ch.health-=1;
+							break;
+						}
+					}
+				}
 			}
 		}
 	}

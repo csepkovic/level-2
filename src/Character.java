@@ -22,20 +22,20 @@ public class Character extends GameObject {
 		}
 		if (up == true) {
 			y-=ySpeed;
+			down = false;
 		} 
 		if (down == true) {
 			y+=ySpeed;
+			up = false;
 		} 
 		if (right == true) {
 			x+=xSpeed;
+			left = false;
 		} 
 		if (left == true) {
 			x-=xSpeed;
+			right = false;
 		} 
-//		up = false;
-//		down = false;
-//		left = false;
-//		right = false;
 	}
 
 	void draw(Graphics g) {
