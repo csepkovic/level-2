@@ -31,6 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font title;
 	static Character character;
 	public static Level level;
+	static Sword sword;
 	LevelDoor door1;
 	LevelDoor door2;
 	LevelDoor door3;
@@ -46,6 +47,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		title = new Font("W", Font.PLAIN, 50);
 		character = new Character(325, 275, 50, 50, 4, 4, 3, true);
 		manager.addCharacter(character);
+		sword = new Sword(character.x, character.y, 25, 25, 1, true);
 		door1 = new LevelDoor(10, 255, 51, 70, 1, true);
 		manager.addDoor(door1);
 		door2 = new LevelDoor(639, 255, 51, 70, 1, true);
@@ -187,6 +189,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			Character.up = false;
 			System.out.println("up false");
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			
 		}
 		}
 	}

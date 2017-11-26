@@ -37,18 +37,6 @@ public class Game {
 	
 		panel.startGame();
 		frame.addKeyListener(panel);
-//		ActionMap actionMap = panel.getActionMap();
-//	      int condition = JComponent.WHEN_IN_FOCUSED_WINDOW;
-//	      InputMap inputMap = panel.getInputMap(condition);
-//
-//	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), UP);
-//	      actionMap.put(UP, new UpAction());
-//	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), DOWN);
-//	      actionMap.put(DOWN, new DownAction());
-//	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), LEFT);
-//	      actionMap.put(LEFT, new LeftAction());
-//	      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), RIGHT);
-//	      actionMap.put(RIGHT, new RightAction());
 	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -59,45 +47,7 @@ public class Game {
 				Game game = new Game(700, 600);
 			}
 		});
-		
 	}
-//	@SuppressWarnings("serial")
-//	class UpAction extends AbstractAction {
-//	   @Override
-//	   public void actionPerformed(ActionEvent arg0) {
-//	      Character.up=true;
-//	      Character.down=false;
-//	      System.out.println("up");
-//	   }
-//	}
-//	@SuppressWarnings("serial")
-//	class DownAction extends AbstractAction {
-//	   @Override
-//	   public void actionPerformed(ActionEvent arg0) {
-//	      Character.down=true;
-//	      Character.up=false;
-//	      System.out.println("down");
-//	   }
-//	}
-//	@SuppressWarnings("serial")
-//	class LeftAction extends AbstractAction {
-//	   @Override
-//	   public void actionPerformed(ActionEvent arg0) {
-//	      Character.left=true;
-//	      Character.right=false;
-//	      System.out.println("left");
-//	   }
-//	}
-//	@SuppressWarnings("serial")
-//	class RightAction extends AbstractAction {
-//	   @Override
-//	   public void actionPerformed(ActionEvent arg0) {
-//	      Character.right=true;
-//	      Character.left=false;
-//	      System.out.println("right");
-//	   }
-//	}
-//	
 }
 
 

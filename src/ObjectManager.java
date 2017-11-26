@@ -88,7 +88,7 @@ public class ObjectManager {
 		return l;
 	}
 
-
+	int collision = 0;
 	public void checkCollision() {
 		for (LevelDoor d: doors) {
 			if (ch.collisionBox.intersects(d.collisionBox)) {
@@ -99,18 +99,24 @@ public class ObjectManager {
 				break;
 			}
 		}
+		if (collision == 0) {
 		if (l != null ) {
 			if(l.getEnemies()!= null && ch!=null) {
 				for (Enemy1 enemy: l.getEnemies()) {
 					if(enemy!= null) {
 						if (ch.collisionBox.intersects(enemy.collisionBox)) {
 							System.out.println("enemy collision");
-//							ch.health-=1;
+							ch.health-=1;
+							collision=100;
 							break;
 						}
 					}
 				}
 			}
+		}
+		} else {
+		collision-=1;
+		System.out.println(collision);
 		}
 	}
 

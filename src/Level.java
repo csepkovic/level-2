@@ -49,6 +49,7 @@ public class Level extends GameObject {
 					enemy.y -= 50;
 				}
 				enemies.add(enemy);
+				System.out.println("enemy added");
 				enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true,
 						2, 1);
 				if (enemy1.x > 350 && enemy1.x < 400) {
@@ -64,6 +65,7 @@ public class Level extends GameObject {
 					enemy1.y -= 50;
 				}
 				enemies.add(enemy1);
+				System.out.println("enemy1 added");
 			}
 		} else if (levelType == 3) {
 			color = new Color(50, 50, 50);
@@ -82,7 +84,8 @@ public class Level extends GameObject {
 				if (enemy.y > 250 && enemy.y < 300) {
 					enemy.y -= 50;
 				}
-				enemies.add(enemy1);
+				enemies.add(enemy);
+				System.out.println(" added");
 				enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true,
 						2, 1);
 				if (enemy1.x > 350 && enemy1.x < 400) {
@@ -97,7 +100,8 @@ public class Level extends GameObject {
 				if (enemy1.y > 250 && enemy1.y < 300) {
 					enemy1.y -= 50;
 				}
-				enemies.add(enemy2);
+				enemies.add(enemy1);
+				System.out.println("enemy1 added");
 				enemy2 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true,
 						1, 2);
 				if (enemy2.x > 350 && enemy2.x < 400) {
@@ -112,6 +116,8 @@ public class Level extends GameObject {
 				if (enemy2.y > 250 && enemy2.y < 300) {
 					enemy2.y -= 50;
 				}
+				enemies.add(enemy2);
+				System.out.println("enemy2 added");
 			}
 		} else if (levelType == 4) {
 			color = new Color(70, 60, 60);
@@ -131,6 +137,7 @@ public class Level extends GameObject {
 					enemy.y -= 50;
 				}
 				enemies.add(enemy);
+				System.out.println("enemy added");
 				enemy1 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true,
 						2, 1);
 				if (enemy1.x > 350 && enemy1.x < 400) {
@@ -146,6 +153,7 @@ public class Level extends GameObject {
 					enemy1.y -= 50;
 				}
 				enemies.add(enemy1);
+				System.out.println("enemy1 added");
 				enemy2 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true,
 						1, 2);
 				if (enemy2.x > 350 && enemy2.x < 400) {
@@ -161,6 +169,7 @@ public class Level extends GameObject {
 					enemy2.y -= 50;
 				}
 				enemies.add(enemy2);
+				System.out.println("enemy2 added");
 				enemy3 = new Enemy1(new Random().nextInt(400) + 100, new Random().nextInt(200) + 300, 25, 1, 25, true,
 						1, 1);
 				if (enemy3.x > 350 && enemy3.x < 400) {
@@ -176,6 +185,7 @@ public class Level extends GameObject {
 					enemy3.y -= 50;
 				}
 				enemies.add(enemy3);
+				System.out.println("enemy3 added");
 			}
 		} else if (levelType == 5) {
 			color = new Color(180, 0, 0);
