@@ -1,11 +1,14 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Enemy1 extends GameObject{
 	int ySpeed;
 	int xSpeed;
-
+	ArrayList <Integer> pastX = new ArrayList<>();
+	ArrayList <Integer> pastY = new ArrayList<>();
+	
 	public Enemy1(int x, int y, int width, int health, int height, boolean isAlive, int ySpeed, int xSpeed) {
 		super(x, y, width, height, health, isAlive);
 		this.ySpeed = ySpeed;
@@ -15,6 +18,17 @@ public class Enemy1 extends GameObject{
 	void draw(Graphics g) {
 		g.setColor(Color.MAGENTA);
 		g.drawRect(x, y, width, height);
+		if (pastX.size()<50) {
+			pastX.add(x);
+			pastY.add(y);
+			} else {
+				pastX.remove(0);
+				pastY.remove(0);
+			}
+			for (int i = 0; i < pastX.size(); i++) {
+				g.setColor(new Color(255, 0, 255, 30));
+				g.drawRect(pastX.get(i), pastY.get(i), width, height);
+			}
 	}
 	int random;
 	int random1;

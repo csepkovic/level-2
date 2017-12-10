@@ -20,6 +20,7 @@ public class Level extends GameObject {
 	Color color;
 
 	void draw(Graphics g) {
+		
 		g.drawRect(x, y, width, height);
 		if (levelType == 1) {
 			int random1 = new Random().nextInt(155);

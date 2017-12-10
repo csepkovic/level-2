@@ -5,5 +5,10 @@ public class Sword extends GameObject{
 		super(x, y, width, height, health, isAlive);
 		
 	}
-	
+	void update () {
+		
+	}
+	void draw () {
+		
+	}
 }
