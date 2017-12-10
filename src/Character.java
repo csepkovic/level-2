@@ -1,6 +1,6 @@
  import java.awt.Color;
 import java.awt.Graphics;
-
+//hery
 public class Character extends GameObject {
 	static int xSpeed;
 	static int ySpeed;
