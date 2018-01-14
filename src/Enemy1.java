@@ -16,7 +16,11 @@ public class Enemy1 extends GameObject{
 	}
 	
 	void draw(Graphics g) {
-		g.setColor(Color.MAGENTA);
+		if (GamePanel.level.levelType==1) {
+			g.setColor(new Color(255, 255, 255, 30));
+		} else {
+		g.setColor(Color.MAGENTA); 
+		}
 		g.drawRect(x, y, width, height);
 		if (pastX.size()<50) {
 			pastX.add(x);
@@ -26,7 +30,11 @@ public class Enemy1 extends GameObject{
 				pastY.remove(0);
 			}
 			for (int i = 0; i < pastX.size(); i++) {
-				g.setColor(new Color(255, 0, 255, 30));
+				if (GamePanel.level.levelType==1) {
+					g.setColor(new Color(255, 255, 255, 10));
+				} else {
+					g.setColor(new Color(255, 0, 255, 50)); 
+				}
 				g.drawRect(pastX.get(i), pastY.get(i), width, height);
 			}
 	}
