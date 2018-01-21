@@ -7,6 +7,7 @@ public class ObjectManager {
 	ArrayList<GameObject> objects;
 	Character ch;
 	Level l;
+	Sword s;
 	ArrayList<LevelDoor> doors = new ArrayList<LevelDoor>();
 	
 	
@@ -21,6 +22,10 @@ public class ObjectManager {
 	
 	void addDoor (LevelDoor ld) {
 		doors.add(ld);
+	}
+	
+	void addSword (Sword sd) {
+		s = sd;
 	}
 	
 	public void addObject(GameObject o) {

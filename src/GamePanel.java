@@ -37,6 +37,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	LevelDoor door3;
 	LevelDoor door4;
 	ObjectManager manager;
+	public static BufferedImage laserSword;
 	public static BufferedImage pixelBlood1;
 	public static BufferedImage space;
 	public static BufferedImage pixelSpace;
@@ -47,7 +48,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		title = new Font("W", Font.PLAIN, 50);
 		character = new Character(325, 275, 50, 50, 4, 4, 3, true);
 		manager.addCharacter(character);
-		sword = new Sword(character.x, character.y, 25, 25, 1, true);
+		sword = new Sword(character.x, character.y, 100, 100, 1, true);
+		manager.addSword(sword);
 		door1 = new LevelDoor(10, 255, 51, 70, 1, true);
 		manager.addDoor(door1);
 		door2 = new LevelDoor(639, 255, 51, 70, 1, true);
@@ -57,7 +59,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		door4 = new LevelDoor(315, 504, 70, 51, 1, true);
 		manager.addDoor(door4);
 		manager.addObject(level);
-		
+		try {
+			laserSword = ImageIO.read(this.getClass().getResourceAsStream("lasersword.gif"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		try {
 			pixelBlood1 = ImageIO.read(this.getClass().getResourceAsStream("pixelBlood1.png"));
 		} catch (IOException e) {
@@ -167,6 +174,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			Character.up = true;
 			System.out.println("up true");
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			for (int i = 0; i < 10; i++) {
+				sword.draw(getGraphics());
+				sword.update();
+				System.out.println("sword");
+			}
+			
 		}
 	}
 
