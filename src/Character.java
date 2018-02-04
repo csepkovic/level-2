@@ -61,4 +61,13 @@ public class Character extends GameObject {
 		x = 325;
 		y = 250;
 	}
+	
+	public int getX() {
+		return x;
+		
+	}
+	public int getY() {
+		return y;
+		
+	}
 }

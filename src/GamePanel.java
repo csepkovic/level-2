@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.addDoor(door4);
 		manager.addObject(level);
 		try {
-			laserSword = ImageIO.read(this.getClass().getResourceAsStream("lasersword.gif"));
+			laserSword = ImageIO.read(this.getClass().getResourceAsStream("lasersword.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,6 +126,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		character.draw(g);
 //		System.out.println("update");
 		level.drawEnemy(g);
+		sword.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -177,8 +178,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			for (int i = 0; i < 10; i++) {
-				sword.draw(getGraphics());
-				sword.update();
+				sword.update(character.x, character.y);
 				System.out.println("sword");
 			}
 			
