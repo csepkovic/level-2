@@ -3,13 +3,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -89,7 +86,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		timer.start();
 		level = manager.createLevel(20);
 	}
-	
+
 	void updateMenuState() {
 
 	}
@@ -99,11 +96,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.checkCollision();
 		if (character.isAlive == false) {
 			currentState = END_STATE;
-//			manager.reset();
-//			character = new Character(225, 200, 50, 50, 0, 0, 3, true);
-//			manager.addObject(character);
+			// manager.reset();
+			// character = new Character(225, 200, 50, 50, 0, 0, 3, true);
+			// manager.addObject(character);
 		}
-		
+
 	}
 
 	void updateEndState() {
@@ -116,7 +113,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.YELLOW);
 		g.setFont(title);
 		g.drawString("Idk a name for this game yet", 0, 100);
-		
+
 	}
 
 	void drawGameState(Graphics g) {
@@ -124,8 +121,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		level.draw(g);
 		manager.drawDoors(g);
 		character.draw(g);
-//		System.out.println("update");
+		// System.out.println("update");
 		level.drawEnemy(g);
+		sword.update(character.x, character.y);
 		sword.draw(g);
 	}
 
@@ -155,7 +153,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -179,37 +177,36 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			for (int i = 0; i < 10; i++) {
 				sword.update(character.x, character.y);
-				System.out.println("sword");
+				sword.swing = true;
 			}
-			
+
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-//		 TODO Auto-generated method stub
+		// TODO Auto-generated method stub
 		if (level.levelType != 6) {
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			Character.right = false;
-			System.out.println("right false");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			Character.left = false;
-			System.out.println("left false");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			Character.down = false;
-			System.out.println("down false");
-		}
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			Character.up = false;
-			System.out.println("up false");
+			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				Character.right = false;
+				System.out.println("right false");
+			}
+			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				Character.left = false;
+				System.out.println("left false");
+			}
+			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				Character.down = false;
+				System.out.println("down false");
+			}
+			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				Character.up = false;
+				System.out.println("up false");
+			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			
-		}
+			sword.swing = false;
 		}
 	}
-	
 
 }

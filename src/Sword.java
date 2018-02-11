@@ -1,35 +1,40 @@
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-public class Sword extends GameObject{
-	ArrayList <Integer> pastX = new ArrayList<>();
-	ArrayList <Integer> pastY = new ArrayList<>();
+public class Sword extends GameObject {
+	ArrayList<Integer> pastX = new ArrayList<>();
+	ArrayList<Integer> pastY = new ArrayList<>();
+	boolean swing = false;
 
 	public Sword(int x, int y, int width, int height, int health, boolean isAlive) {
 		super(x, y, width, height, health, isAlive);
 	}
-	void update (int X, int Y) {
+
+	void update(int X, int Y) {
 		super.update();
-		x=X-20;
-		y=Y-20;
-		System.out.println("sword move");
-//		if (pastX.size()<4) {
-//			pastX.add(x);
-//			pastY.add(y);
-//			} else {
-//				pastX.remove(0);
-//				pastY.remove(0);
-//			}
+		x = X + 25;
+		y = Y + 25;
 	}
-	void draw (Graphics g) {
-		
+
+	double slice = 0.1;
+
+	void draw(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		if (swing == true) {
+			slice += 0.1;
+			System.out.println(slice);
+		}
+		g2d.rotate(slice, x, y);
+		g2d.drawImage(GamePanel.laserSword, x, y, width, height, null);
+		if (slice >= 6.2) {
+			slice = 0;
+		}
+	}
+
+	void attackDownLeft(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.rotate(.5, x, y);
 		g.drawImage(GamePanel.laserSword, x, y, width, height, null);
-//		if (pastX.size()<4) {
-//			for (int i = 0; i < pastX.size(); i++) {
-//				g.setColor(new Color(100, 100, 255, 70));
-//				g.drawImage(GamePanel.laserSword, pastX.get(i), pastY.get(i), width, height, null);
-//			}
-//	}
 	}
 }
