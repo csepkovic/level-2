@@ -93,7 +93,8 @@ public class ObjectManager {
 		return l;
 	}
 
-	int collision = 0;
+	int invince = 0;
+	int killPause = 0;
 	public void checkCollision() {
 		for (LevelDoor d: doors) {
 			if (ch.collisionBox.intersects(d.collisionBox)) {
@@ -104,7 +105,25 @@ public class ObjectManager {
 				break;
 			}
 		}
-		if (collision == 0) {
+//		if (killPause == 0) {
+			if (l != null ) {
+				if(l.getEnemies()!= null && s!=null) {
+					for (int i = 0; i < l.enemies.size(); i++) {
+						Enemy1 temp = l.enemies.get(i);
+							if (s.collisionBox.intersects(temp.collisionBox)) {
+								System.out.println("enemy kill");
+								l.enemies.remove(i);
+//								killPause+=50;
+								break;
+						}
+					}
+				}
+//			}
+		} else {
+			killPause-=1;
+			System.out.println(killPause);
+		}
+		if (invince == 0) {
 		if (l != null ) {
 			if(l.getEnemies()!= null && ch!=null) {
 				for (Enemy1 enemy: l.getEnemies()) {
@@ -112,7 +131,7 @@ public class ObjectManager {
 						if (ch.collisionBox.intersects(enemy.collisionBox)) {
 							System.out.println("enemy collision");
 							ch.health-=1;
-							collision=100;
+							invince+=100;
 							break;
 						}
 					}
@@ -120,8 +139,8 @@ public class ObjectManager {
 			}
 		}
 		} else {
-		collision-=1;
-		System.out.println(collision);
+		invince-=1;
+//		System.out.println(invince);
 		}
 	}
 

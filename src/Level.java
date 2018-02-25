@@ -344,23 +344,29 @@ public class Level extends GameObject {
 	}
 
 	void drawEnemy(Graphics g) {
-		if (enemy != null && enemy1 != null) {
-			enemy.draw(g);
-			enemy1.draw(g);
-			enemy.update();
-			enemy1.update();
-			if (enemy2 != null) {
-				enemy2.draw(g);
-				enemy2.update();
-				if (enemy3 != null) {
-					enemy3.draw(g);
-					enemy3.update();
-				}
-			}
+//		if (enemy != null && enemy1 != null) {
+//			enemy.draw(g);
+//			enemy1.draw(g);
+//			enemy.update();
+//			enemy1.update();
+//			if (enemy2 != null) {
+//				enemy2.draw(g);
+//				enemy2.update();
+//				if (enemy3 != null) {
+//					enemy3.draw(g);
+//					enemy3.update();
+//				}
+//			}
+//		}
+		
+		for (Enemy1 enemies: getEnemies()) {
+			enemies.update();
+			enemies.draw(g);
 		}
 	}
 	
 	ArrayList <Enemy1> getEnemies() {
 		return enemies;
 	}
+	
 }

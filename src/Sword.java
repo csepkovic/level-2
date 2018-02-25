@@ -23,18 +23,12 @@ public class Sword extends GameObject {
 		Graphics2D g2d = (Graphics2D) g;
 		if (swing == true) {
 			slice += 0.1;
-			System.out.println(slice);
 		}
 		g2d.rotate(slice, x, y);
 		g2d.drawImage(GamePanel.laserSword, x, y, width, height, null);
 		if (slice >= 6.2) {
 			slice = 0;
 		}
-	}
-
-	void attackDownLeft(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.rotate(.5, x, y);
-		g.drawImage(GamePanel.laserSword, x, y, width, height, null);
+		g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
 	}
 }

@@ -160,19 +160,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			Character.right = true;
-			System.out.println("right true");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			Character.left = true;
-			System.out.println("left true");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			Character.down = true;
-			System.out.println("down true");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			Character.up = true;
-			System.out.println("up true");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			for (int i = 0; i < 10; i++) {
@@ -189,19 +185,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if (level.levelType != 6) {
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 				Character.right = false;
-				System.out.println("right false");
 			}
 			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 				Character.left = false;
-				System.out.println("left false");
 			}
 			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 				Character.down = false;
-				System.out.println("down false");
 			}
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
 				Character.up = false;
-				System.out.println("up false");
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
