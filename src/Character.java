@@ -42,6 +42,7 @@ public class Character extends GameObject {
 	}
 
 	void draw(Graphics g) {
+		super.draw(g);
 		g.setColor(Color.WHITE);
 		g.fill3DRect(x, y, width, height, true);
 		if (pastX.size()<4) {

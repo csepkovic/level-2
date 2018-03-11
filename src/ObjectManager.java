@@ -18,6 +18,7 @@ public class ObjectManager {
 	
 	void addCharacter(Character c) {
 		ch = c;
+		addObject(ch);
 	}
 	
 	void addDoor (LevelDoor ld) {
@@ -26,6 +27,7 @@ public class ObjectManager {
 	
 	void addSword (Sword sd) {
 		s = sd;
+		addObject(s);
 	}
 	
 	public void addObject(GameObject o) {
@@ -35,9 +37,11 @@ public class ObjectManager {
 	public void update() {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
+			if (i != 1) {
+			o.update();
+			}
+			System.out.println(o);
 		}
-		// purgeObjects();
-		System.out.println();
 	}
 
 	public void draw(Graphics g) {

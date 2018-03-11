@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		title = new Font("W", Font.PLAIN, 50);
 		character = new Character(325, 275, 50, 50, 4, 4, 3, true);
 		manager.addCharacter(character);
-		sword = new Sword(character.x, character.y, 100, 100, 1, true);
+		sword = new Sword(character.x+25, character.y+25, 100, 100, 1, true);
 		manager.addSword(sword);
 		door1 = new LevelDoor(10, 255, 51, 70, 1, true);
 		manager.addDoor(door1);
@@ -92,6 +92,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
+		sword.update(character.x, character.y);
+		manager.characterBoundaries(character, level);
 		manager.update();
 		manager.checkCollision();
 		if (character.isAlive == false) {
@@ -123,7 +125,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		character.draw(g);
 		// System.out.println("update");
 		level.drawEnemy(g);
-		sword.update(character.x, character.y);
 		sword.draw(g);
 	}
 
@@ -144,9 +145,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		updateGameState();
 		character.update();
+		sword.update(character.x, character.y);
 		manager.characterBoundaries(character, level);
-		manager.checkCollision();
 		repaint();
 	}
 
@@ -172,7 +174,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			for (int i = 0; i < 10; i++) {
-				sword.update(character.x, character.y);
 				sword.swing = true;
 			}
 

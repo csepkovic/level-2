@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 public class Sword extends GameObject {
@@ -12,7 +13,9 @@ public class Sword extends GameObject {
 	}
 
 	void update(int X, int Y) {
-		super.update();
+//		super.update();
+		collisionBox.setBounds(x,  y ,  width, height);
+
 		x = X + 25;
 		y = Y + 25;
 	}
@@ -20,15 +23,17 @@ public class Sword extends GameObject {
 	double slice = 0.1;
 
 	void draw(Graphics g) {
+		super.draw(g);
 		Graphics2D g2d = (Graphics2D) g;
 		if (swing == true) {
 			slice += 0.1;
 		}
 		g2d.rotate(slice, x, y);
 		g2d.drawImage(GamePanel.laserSword, x, y, width, height, null);
+		super.draw(g);
 		if (slice >= 6.2) {
 			slice = 0;
 		}
-		g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
+		
 	}
 }

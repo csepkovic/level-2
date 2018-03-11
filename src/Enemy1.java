@@ -37,11 +37,13 @@ public class Enemy1 extends GameObject{
 				}
 				g.drawRect(pastX.get(i), pastY.get(i), width, height);
 			}
+		super.draw(g);
 	}
 	int random;
 	int random1;
 	int probability;
 	void update() {
+		super.update();
 		probability = new Random().nextInt(5);
 		random = new Random().nextInt(3);
 		random-=1;
