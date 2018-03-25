@@ -37,10 +37,9 @@ public class ObjectManager {
 	public void update() {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
-			if (i != 1) {
+			if (i == 0) {
 			o.update();
 			}
-			System.out.println(o);
 		}
 	}
 
