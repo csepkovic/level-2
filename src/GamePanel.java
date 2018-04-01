@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -17,7 +18,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
-	int currentState = GAME_STATE;
+	int currentState;
 	final int BONUS_LEVEL = 1;
 	final int REGULAR_LEVEL = 2;
 	final int HARD_LEVEL = 3;
@@ -26,6 +27,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int SPACE_LEVEL = 6;
 	int currentLevel = REGULAR_LEVEL;
 	Font title;
+	Font healthBar;
+	Font G;
+	Font A;
+	Font M;
+	Font E;
+	Font O;
+	Font V;
+	Font E2;
+	Font R;
 	static Character character;
 	public static Level level;
 	static Sword sword;
@@ -42,10 +52,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public GamePanel() {
 		manager = new ObjectManager();
 		timer = new Timer(1000 / 60, this);
-		title = new Font("W", Font.PLAIN, 50);
+		title = new Font("Comic Sans", Font.BOLD, 50);
+		healthBar = new Font("Comic Sans", Font.BOLD, 10);
+		G = new Font("Hoefler", Font.BOLD, 100);
+		A = new Font("Hoefler", Font.BOLD, 95);
+		M = new Font("Hoefler", Font.BOLD, 105);
+		E = new Font("Hoefler", Font.BOLD, 110);
+		O = new Font("Hoefler", Font.BOLD, 90);
+		V = new Font("Hoefler", Font.BOLD, 105);
+		E2 = new Font("Hoefler", Font.BOLD, 110);
+		R = new Font("Hoefler", Font.BOLD, 105);
 		character = new Character(325, 275, 50, 50, 4, 4, 3, true);
 		manager.addCharacter(character);
-		sword = new Sword(character.x+25, character.y+25, 100, 100, 1, true);
+		sword = new Sword(character.x + 25, character.y + 25, 100, 100, 1, true);
 		manager.addSword(sword);
 		door1 = new LevelDoor(10, 255, 51, 70, 1, true);
 		manager.addDoor(door1);
@@ -85,6 +104,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void startGame() {
 		timer.start();
 		level = manager.createLevel(20);
+		currentState = GAME_STATE;
 	}
 
 	void updateMenuState() {
@@ -97,10 +117,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.update();
 		manager.checkCollision();
 		if (character.isAlive == false) {
+			manager.purgeObjects();
 			currentState = END_STATE;
-			// manager.reset();
-			// character = new Character(225, 200, 50, 50, 0, 0, 3, true);
-			// manager.addObject(character);
 		}
 
 	}
@@ -123,13 +141,66 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		level.draw(g);
 		manager.drawDoors(g);
 		character.draw(g);
-		// System.out.println("update");
 		level.drawEnemy(g);
+		g.setColor(Color.WHITE);
+		g.setFont(healthBar);
+		g.drawString("Health: " + character.health, character.x - 10, character.y - 10);
 		sword.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
-
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, 700, 600);
+		g.setColor(Color.YELLOW);
+		Random rand = new Random();
+		int randomX = rand.nextInt(10);
+		randomX -= 5;
+		int randomY = rand.nextInt(10);
+		randomY -= 5;
+		int randomX1 = rand.nextInt(10);
+		randomX -= 5;
+		int randomY1 = rand.nextInt(10);
+		randomY -= 5;
+		int randomX2 = rand.nextInt(10);
+		randomX -= 5;
+		int randomY2 = rand.nextInt(10);
+		randomY -= 5;
+		int randomX3 = rand.nextInt(10);
+		randomX -= 5;
+		int randomY3 = rand.nextInt(10);
+		randomY -= 5;
+		int randomX4 = rand.nextInt(10);
+		randomX -= 5;
+		int randomY4 = rand.nextInt(10);
+		randomY -= 5;
+		int randomX5 = rand.nextInt(10);
+		randomX -= 5;
+		int randomY5 = rand.nextInt(10);
+		randomY -= 5;
+		int randomX6 = rand.nextInt(10);
+		randomX -= 5;
+		int randomY6 = rand.nextInt(10);
+		randomY -= 5;
+		int randomX7 = rand.nextInt(10);
+		randomX -= 5;
+		int randomY7 = rand.nextInt(10);
+		randomY -= 5;
+		g.setFont(G);
+		g.drawString("G", 115 + randomX, 190 + randomY);
+		g.setFont(A);
+		g.drawString("A", 180 + randomX1, 155 + randomY1);
+		g.setFont(M);
+		g.drawString("M", 260 + randomX2, 145 + randomY2);
+		g.setFont(E);
+		g.drawString("E", 375 + randomX3, 155 + randomY3);
+		g.setFont(O);
+		g.drawString("O", 75 + randomX4, 255 + randomY4);
+		g.setFont(V);
+		g.drawString("V", 180 + randomX5, 255 + randomY5);
+		g.setFont(E2);
+		g.drawString("E", 285 + randomX6, 250 + randomY6);
+		g.setFont(R);
+		g.drawString("R", 365 + randomX7, 260 + randomY7);
 	}
 
 	public void paintComponent(Graphics g) {
