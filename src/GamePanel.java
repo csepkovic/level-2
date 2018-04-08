@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	int currentLevel = REGULAR_LEVEL;
 	Font title;
 	Font healthBar;
+	Font scoreDisplay;
 	Font G;
 	Font A;
 	Font M;
@@ -53,7 +54,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager = new ObjectManager();
 		timer = new Timer(1000 / 60, this);
 		title = new Font("Comic Sans", Font.BOLD, 50);
-		healthBar = new Font("Comic Sans", Font.BOLD, 10);
+		healthBar = new Font("Comic Sans", Font.BOLD, 15);
+		scoreDisplay = new Font("Comic Sans", Font.BOLD, 25);
 		G = new Font("Hoefler", Font.BOLD, 100);
 		A = new Font("Hoefler", Font.BOLD, 95);
 		M = new Font("Hoefler", Font.BOLD, 105);
@@ -62,7 +64,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		V = new Font("Hoefler", Font.BOLD, 105);
 		E2 = new Font("Hoefler", Font.BOLD, 110);
 		R = new Font("Hoefler", Font.BOLD, 105);
-		character = new Character(325, 275, 50, 50, 4, 4, 3, true);
+		character = new Character(325, 275, 50, 50, 5, 5, 3, true);
 		manager.addCharacter(character);
 		sword = new Sword(character.x + 25, character.y + 25, 100, 100, 1, true);
 		manager.addSword(sword);
@@ -104,6 +106,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void startGame() {
 		timer.start();
 		level = manager.createLevel(20);
+		manager.score = 0;
 		currentState = GAME_STATE;
 	}
 
@@ -145,6 +148,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.WHITE);
 		g.setFont(healthBar);
 		g.drawString("Health: " + character.health, character.x - 10, character.y - 10);
+		g.setFont(scoreDisplay);
+		g.drawString("Score: " + manager.score, 25, 35);
 		sword.draw(g);
 	}
 
@@ -158,49 +163,55 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		int randomY = rand.nextInt(10);
 		randomY -= 5;
 		int randomX1 = rand.nextInt(10);
-		randomX -= 5;
+		randomX1 -= 5;
 		int randomY1 = rand.nextInt(10);
-		randomY -= 5;
+		randomY1 -= 5;
 		int randomX2 = rand.nextInt(10);
-		randomX -= 5;
+		randomX2 -= 5;
 		int randomY2 = rand.nextInt(10);
-		randomY -= 5;
+		randomY2 -= 5;
 		int randomX3 = rand.nextInt(10);
-		randomX -= 5;
+		randomX3 -= 5;
 		int randomY3 = rand.nextInt(10);
-		randomY -= 5;
+		randomY3 -= 5;
 		int randomX4 = rand.nextInt(10);
-		randomX -= 5;
+		randomX4 -= 5;
 		int randomY4 = rand.nextInt(10);
-		randomY -= 5;
+		randomY4 -= 5;
 		int randomX5 = rand.nextInt(10);
-		randomX -= 5;
+		randomX5 -= 5;
 		int randomY5 = rand.nextInt(10);
-		randomY -= 5;
+		randomY5 -= 5;
 		int randomX6 = rand.nextInt(10);
-		randomX -= 5;
+		randomX6 -= 5;
 		int randomY6 = rand.nextInt(10);
-		randomY -= 5;
+		randomY6 -= 5;
 		int randomX7 = rand.nextInt(10);
-		randomX -= 5;
+		randomX7 -= 5;
 		int randomY7 = rand.nextInt(10);
-		randomY -= 5;
+		randomY7 -= 5;
+		int randomX8 = rand.nextInt(4);
+		randomX8 -= 2;
+		int randomY8 = rand.nextInt(4);
+		randomY8 -= 2;
 		g.setFont(G);
-		g.drawString("G", 115 + randomX, 190 + randomY);
+		g.drawString("G", 125 + randomX, 150 + randomY);
 		g.setFont(A);
-		g.drawString("A", 180 + randomX1, 155 + randomY1);
+		g.drawString("A", 230 + randomX1, 155 + randomY1);
 		g.setFont(M);
-		g.drawString("M", 260 + randomX2, 145 + randomY2);
+		g.drawString("M", 310 + randomX2, 145 + randomY2);
 		g.setFont(E);
-		g.drawString("E", 375 + randomX3, 155 + randomY3);
+		g.drawString("E", 425 + randomX3, 155 + randomY3);
 		g.setFont(O);
-		g.drawString("O", 75 + randomX4, 255 + randomY4);
+		g.drawString("O", 125 + randomX4, 255 + randomY4);
 		g.setFont(V);
-		g.drawString("V", 180 + randomX5, 255 + randomY5);
+		g.drawString("V", 230 + randomX5, 255 + randomY5);
 		g.setFont(E2);
-		g.drawString("E", 285 + randomX6, 250 + randomY6);
+		g.drawString("E", 335 + randomX6, 250 + randomY6);
 		g.setFont(R);
-		g.drawString("R", 365 + randomX7, 260 + randomY7);
+		g.drawString("R", 415 + randomX7, 260 + randomY7);
+		g.setFont(scoreDisplay);
+		g.drawString("Score: " + manager.score, 260 + randomX8, 400 + randomY8);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -218,7 +229,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		updateGameState();
 		character.update();
-		sword.update(character.x, character.y);
 		manager.characterBoundaries(character, level);
 		repaint();
 	}

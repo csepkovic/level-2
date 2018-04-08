@@ -7,7 +7,8 @@ public class ObjectManager {
 	Level l;
 	Sword s;
 	ArrayList<LevelDoor> doors = new ArrayList<LevelDoor>();
-
+	int score;
+	
 	public ObjectManager() {
 		objects = new ArrayList<GameObject>();
 		this.l = GamePanel.level;
@@ -94,6 +95,7 @@ public class ObjectManager {
 	int invince = 0;
 	int killPause = 0;
 	int chealth = 0;
+	int levelTypeBonus = 0;
 
 	public void checkCollision() {
 		for (LevelDoor d : doors) {
@@ -105,7 +107,6 @@ public class ObjectManager {
 					ch.health++;
 					chealth = 0;
 				}
-				System.out.println("Health: " + ch.health);
 				break;
 			}
 		}
@@ -116,6 +117,14 @@ public class ObjectManager {
 						Enemy1 temp = l.enemies.get(i);
 						if (s.collisionBox.intersects(temp.collisionBox)) {
 							l.enemies.remove(i);
+							score++;
+							if (l.levelType == 5 || l.levelType == 6) {
+								levelTypeBonus++;
+							}
+							if (levelTypeBonus == 2) {
+								score++;
+								levelTypeBonus = 0;
+							}
 							killPause += 5;
 							break;
 						}
@@ -132,8 +141,7 @@ public class ObjectManager {
 						if (enemy != null) {
 							if (ch.collisionBox.intersects(enemy.collisionBox)) {
 								ch.health -= 1;
-								invince += 30;
-								System.out.println("Health: " + ch.health);
+								invince += 50;
 								break;
 							}
 						}
