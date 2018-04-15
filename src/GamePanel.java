@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	final int SPACE_LEVEL = 6;
 	int currentLevel = REGULAR_LEVEL;
 	Font title;
+	Font directions;
 	Font healthBar;
 	Font scoreDisplay;
 	Font G;
@@ -51,9 +52,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public static BufferedImage pixelSpace;
 
 	public GamePanel() {
+		currentState = MENU_STATE;
 		manager = new ObjectManager();
 		timer = new Timer(1000 / 60, this);
 		title = new Font("Comic Sans", Font.BOLD, 50);
+		directions = new Font("Arial", Font.BOLD, 25);
 		healthBar = new Font("Comic Sans", Font.BOLD, 15);
 		scoreDisplay = new Font("Comic Sans", Font.BOLD, 25);
 		G = new Font("Hoefler", Font.BOLD, 100);
@@ -111,7 +114,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateMenuState() {
-
+		
 	}
 
 	void updateGameState() {
@@ -127,16 +130,33 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateEndState() {
-//		manager
+		
 	}
-
+	
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 700, 600);
-		g.setColor(Color.YELLOW);
+		int random1 = new Random().nextInt(155);
+		random1+=100;
+		int random2 = new Random().nextInt(155);
+		random2+=100;
+		int random3 = new Random().nextInt(155);
+		random3+=100;
+		Color color = new Color(random1, random2, random3);
+		g.setColor(color);
+		Random rand = new Random();
+		int randomX = rand.nextInt(10);
+		randomX -= 5;
+		int randomY = rand.nextInt(10);
 		g.setFont(title);
-		g.drawString("Idk a name for this game yet", 0, 100);
-
+		g.drawString("SPACE", 200 + randomX, 200 + randomY);
+		g.setColor(Color.YELLOW);
+		g.drawString("22,982,400 Seconds", 100, 100);
+		g.drawString("SPACE", 200 + (randomX/2), 200 + (randomY/2));
+		g.setFont(directions);
+		g.drawString("in", 335, 130);
+		g.drawString("Use the arrow keys to move", 40, 350);
+		g.drawString("Use the spacebar to swing your sword", 100, 400);
 	}
 
 	void drawGameState(Graphics g) {
@@ -222,6 +242,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		} else if (currentState == END_STATE) {
 			drawEndState(g);
 		}
+		System.out.println("draw");
 	}
 
 	@Override
@@ -257,7 +278,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			for (int i = 0; i < 10; i++) {
 				sword.swing = true;
 			}
-		if (currentState == MENU_STATE) {
+		if (currentState == END_STATE) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				startGame();
 			}
