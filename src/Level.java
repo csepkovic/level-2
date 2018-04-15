@@ -316,6 +316,8 @@ public class Level extends GameObject {
 		number++;
 		if (levelType == 5) {
 			g.drawImage(GamePanel.pixelBlood1, x - 20, y - 20, width, height, null);
+			g.setColor(new Color(0, 0, 0, 50));
+			g.fillRect(x, y, width, height);
 		}
 		if (levelType == 6) {
 			g.drawImage(GamePanel.space, x, y, width, height, null);

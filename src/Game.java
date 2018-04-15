@@ -34,7 +34,6 @@ public class Game {
 		frame.setSize(width, height);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
 		panel.startGame();
 		frame.addKeyListener(panel);
 	}

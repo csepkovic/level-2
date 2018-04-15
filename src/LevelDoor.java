@@ -10,7 +10,7 @@ public class LevelDoor extends GameObject{
 	int getDoorType (){
 		return doorType;
 	}
-	void draw(Graphics g){
+	void draw(Graphics g, int doorV){
 		if (doorType <= 10) {
 			int random1 = new Random().nextInt(155);
 			random1+=100;
@@ -38,7 +38,10 @@ public class LevelDoor extends GameObject{
 			g.fillRect(x, y, width, height);
 		} else if (doorType > 90) {
 			g.drawImage(GamePanel.pixelSpace, x, y, width, height, null);
-		}
+		} 
+		g.setColor(new Color (0, 0, 0, doorV));
+		g.fillRect(x, y, width, height);
+//		}
 	}
 	void update(){
 		

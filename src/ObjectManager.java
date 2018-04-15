@@ -8,6 +8,8 @@ public class ObjectManager {
 	Sword s;
 	ArrayList<LevelDoor> doors = new ArrayList<LevelDoor>();
 	int score;
+	int doorVis;
+	int moveLevels;
 	
 	public ObjectManager() {
 		objects = new ArrayList<GameObject>();
@@ -56,6 +58,7 @@ public class ObjectManager {
 
 	public Level createLevel(int random1) {
 		doors.clear();
+		doorVis = 255;
 		int levelType = random1;
 		if (random1 <= 10) {
 			levelType = 1;
@@ -86,8 +89,6 @@ public class ObjectManager {
 		addDoor(door4);
 		Level l = new Level(50, 50, 600, 475, 1, true, levelType);
 		addObject(l);
-		System.out.println(levelType);
-		addObject(l);
 		this.l = l;
 		return l;
 	}
@@ -100,6 +101,7 @@ public class ObjectManager {
 	public void checkCollision() {
 		for (LevelDoor d : doors) {
 			if (ch.collisionBox.intersects(d.collisionBox)) {
+				if (moveLevels == 0) {
 				reset(d);
 				ch.reset();
 				chealth += 1;
@@ -108,6 +110,7 @@ public class ObjectManager {
 					chealth = 0;
 				}
 				break;
+				}
 			}
 		}
 		if (killPause == 0) {
@@ -188,11 +191,16 @@ public class ObjectManager {
 		objects.clear();
 		System.out.println("reset");
 	}
-
 	public void drawDoors(Graphics g) {
 		// TODO Auto-generated method stub
+		moveLevels = l.enemies.size();
+		if (moveLevels == 0) {
+			if (doorVis > 0) {
+			doorVis-=5;
+			}
+		}
 		for (LevelDoor d : doors) {
-			d.draw(g);
+			d.draw(g, doorVis);
 		}
 	}
 }

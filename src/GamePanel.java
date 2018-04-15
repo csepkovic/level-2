@@ -123,11 +123,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			manager.purgeObjects();
 			currentState = END_STATE;
 		}
-
+		
 	}
 
 	void updateEndState() {
-
+//		manager
 	}
 
 	void drawMenuState(Graphics g) {
@@ -257,7 +257,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			for (int i = 0; i < 10; i++) {
 				sword.swing = true;
 			}
-
+		if (currentState == MENU_STATE) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				startGame();
+			}
+		}
 		}
 	}
 
