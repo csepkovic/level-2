@@ -107,10 +107,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void startGame() {
+		currentState = GAME_STATE;
 		timer.start();
 		level = manager.createLevel(20);
 		manager.score = 0;
-		currentState = GAME_STATE;
 	}
 
 	void updateMenuState() {
@@ -124,6 +124,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.checkCollision();
 		if (character.isAlive == false) {
 			manager.purgeObjects();
+			manager.reset();
 			currentState = END_STATE;
 		}
 		
@@ -262,6 +263,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if (currentState == GAME_STATE)
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			Character.right = true;
 		}
@@ -278,9 +280,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			for (int i = 0; i < 10; i++) {
 				sword.swing = true;
 			}
-		if (currentState == END_STATE) {
-			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+		if (currentState == END_STATE || currentState == MENU_STATE) {
+			if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 				startGame();
+				System.out.println("start");
 			}
 		}
 		}
@@ -289,6 +292,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if (currentState == GAME_STATE) {
 		if (level.levelType != 6) {
 			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 				Character.right = false;
@@ -305,6 +309,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			sword.swing = false;
+		}
 		}
 	}
 

@@ -35,6 +35,7 @@ public class Game {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener(panel);
+		panel.startGame();
 	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
