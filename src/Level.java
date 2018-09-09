@@ -11,7 +11,6 @@ public class Level extends GameObject {
 		super(x, y, width, height, health, isAlive);
 		this.levelType = levelType;
 	}
-
 	Enemy1 enemy;
 	Enemy1 enemy1;
 	Enemy1 enemy2;
@@ -62,7 +61,7 @@ public class Level extends GameObject {
 				if (enemy1.y > 250 && enemy1.y < 300) {
 					enemy1.y -= 50;
 				}
-				System.out.println("enemy1 added");
+				enemies.add(enemy1);
 			}
 		} else if (levelType == 2) {
 			color = new Color(40, 40, 40);

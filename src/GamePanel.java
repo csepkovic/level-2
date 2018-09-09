@@ -108,7 +108,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void startGame() {
 		currentState = GAME_STATE;
-		timer.start();
+		character.health = 3;
+		character.isAlive = true;
+		Character.right = false;
+		Character.left = false;
+		Character.up = false;
+		Character.down = false;
+		character.reset();
+		timer.restart();
 		level = manager.createLevel(20);
 		manager.score = 0;
 	}
@@ -120,7 +127,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void updateGameState() {
 		sword.update(character.x, character.y);
 		manager.characterBoundaries(character, level);
-		manager.update();
 		manager.checkCollision();
 		if (character.isAlive == false) {
 			manager.purgeObjects();
@@ -216,23 +222,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		int randomY8 = rand.nextInt(4);
 		randomY8 -= 2;
 		g.setFont(G);
-		g.drawString("G", 125 + randomX, 150 + randomY);
+		g.drawString("G", 135 + randomX, 150 + randomY);
 		g.setFont(A);
-		g.drawString("A", 230 + randomX1, 155 + randomY1);
+		g.drawString("A", 240 + randomX1, 155 + randomY1);
 		g.setFont(M);
-		g.drawString("M", 310 + randomX2, 145 + randomY2);
+		g.drawString("M", 320 + randomX2, 145 + randomY2);
 		g.setFont(E);
-		g.drawString("E", 425 + randomX3, 155 + randomY3);
+		g.drawString("E", 435 + randomX3, 155 + randomY3);
 		g.setFont(O);
-		g.drawString("O", 125 + randomX4, 255 + randomY4);
+		g.drawString("O", 135 + randomX4, 255 + randomY4);
 		g.setFont(V);
-		g.drawString("V", 230 + randomX5, 255 + randomY5);
+		g.drawString("V", 240 + randomX5, 255 + randomY5);
 		g.setFont(E2);
-		g.drawString("E", 335 + randomX6, 250 + randomY6);
+		g.drawString("E", 345 + randomX6, 250 + randomY6);
 		g.setFont(R);
-		g.drawString("R", 415 + randomX7, 260 + randomY7);
+		g.drawString("R", 425 + randomX7, 260 + randomY7);
 		g.setFont(scoreDisplay);
-		g.drawString("Score: " + manager.score, 260 + randomX8, 400 + randomY8);
+		g.drawString("Score: " + manager.score, 270 + randomX8, 400 + randomY8);
+		g.setFont(scoreDisplay);
+		g.drawString("Press SHIFT to play again", 180 + randomX8, 450 + randomY8);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -249,9 +257,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		updateGameState();
-		character.update();
-		manager.characterBoundaries(character, level);
+		if (currentState == GAME_STATE) {
+			updateGameState();
+			character.update();
+			manager.characterBoundaries(character, level);
+		} if (currentState == END_STATE) {
+			updateEndState();
+		}
 		repaint();
 	}
 
@@ -263,7 +275,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (currentState == GAME_STATE)
+		if (currentState == GAME_STATE) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			Character.right = true;
 		}
@@ -280,14 +292,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			for (int i = 0; i < 10; i++) {
 				sword.swing = true;
 			}
+		}
+		}
 		if (currentState == END_STATE || currentState == MENU_STATE) {
 			if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 				startGame();
 				System.out.println("start");
+				
 			}
 		}
 		}
-	}
+
 
 	@Override
 	public void keyReleased(KeyEvent e) {
